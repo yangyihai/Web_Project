@@ -1,0 +1,100 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "Selfie Love",
+				"navigationBarBackgroundColor": "#FF6B9D",
+				"navigationBarTextStyle": "white",
+				"backgroundColor": "#F8F9FA"
+			}
+		},
+		{
+			"path": "pages/camera/camera",
+			"style": {
+				"navigationBarTitleText": "拍摄",
+				"navigationStyle": "custom",
+				"backgroundColor": "#000000"
+			}
+		},
+		{
+			"path": "pages/shape-select/shape-select",
+			"style": {
+				"navigationBarTitleText": "选择形状",
+				"navigationBarBackgroundColor": "#FF6B9D",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/color-adjust/color-adjust",
+			"style": {
+				"navigationBarTitleText": "颜色调节",
+				"navigationBarBackgroundColor": "#4ECDC4",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/filter/filter",
+			"style": {
+				"navigationBarTitleText": "滤镜效果",
+				"navigationBarBackgroundColor": "#FFE66D",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/gallery/gallery",
+			"style": {
+				"navigationBarTitleText": "照片",
+				"navigationBarBackgroundColor": "#FF6B9D",
+				"navigationBarTextStyle": "white"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "Selfie Love",
+		"navigationBarBackgroundColor": "#FF6B9D",
+		"backgroundColor": "#F8F9FA",
+		"backgroundTextStyle": "light",
+		"enablePullDownRefresh": false
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#FF6B9D",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/icons/home.png",
+				"selectedIconPath": "static/icons/home-active.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/camera/camera",
+				"iconPath": "static/icons/camera.png",
+				"selectedIconPath": "static/icons/camera-active.png",
+				"text": "拍摄"
+			},
+			{
+				"pagePath": "pages/gallery/gallery",
+				"iconPath": "static/icons/gallery.png",
+				"selectedIconPath": "static/icons/gallery-active.png",
+				"text": "相册"
+			}
+		]
+	},
+	"permission": {
+		"scope.camera": {
+			"desc": "需要使用相机进行拍摄"
+		},
+		"scope.writePhotosAlbum": {
+			"desc": "需要保存照片到相册"
+		}
+	},
+	"requiredPrivateInfos": [
+		"getLocation",
+		"chooseLocation"
+	],
+	"usingComponents": {}
+}

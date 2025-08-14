@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧医疗咨询平台</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 百度地图GL API -->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=KrCrXuK5j5dADPitphKBlngFEvheNtlq"></script>
+</head>
+<body>
+    <!-- 固定导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="brand-info">
+                        <span class="brand-text">智慧医疗</span>
+                        <span class="brand-subtitle">AI Healthcare</span>
+                    </div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li>
+                    <a href="#home" class="nav-link active" data-section="0">
+                        <div class="nav-link-content">
+                            <i class="fas fa-home"></i>
+                            <span>首页</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#consultation" class="nav-link" data-section="1">
+                        <div class="nav-link-content">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>AI诊断</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#hospitals" class="nav-link" data-section="2">
+                        <div class="nav-link-content">
+                            <i class="fas fa-hospital"></i>
+                            <span>附近医院</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#medication" class="nav-link" data-section="3">
+                        <div class="nav-link-content">
+                            <i class="fas fa-pills"></i>
+                            <span>用药提醒</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="nav-btn search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-btn notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="nav-btn profile-btn">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 滑动容器 -->
+    <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+
+            <!-- 首页区域 -->
+            <section id="home" class="section home-section">
+                <div class="hero-background">
+                    <div class="hero-gradient"></div>
+                    <div class="hero-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+                
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="badge-text">AI赋能 · 智慧医疗</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="title-main">专业医疗咨询</span>
+                            <span class="title-highlight">守护您的健康</span>
+                        </h1>
+                        <p class="hero-description">
+                            结合人工智能与医学专业知识，为您提供24/7在线医疗咨询服务
+                            <br>准确症状分析 · 个性化诊断建议 · 贴心健康管理
+                        </p>
+                        <div class="hero-actions">
+                            <button class="cta-button primary" onclick="showSection('consultation')">
+                                <span class="btn-text">立即体验</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="cta-button secondary" onclick="scrollToFeatures()">
+                                <span class="btn-text">了解更多</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50万+</span>
+                                <span class="stat-label">用户信赖</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">在线服务</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">准确率</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-section">
+                    <div class="features-header">
+                        <h2>核心功能</h2>
+                        <p>全方位的智能医疗服务体系</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card enhanced">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="card-badge">AI</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>AI智能诊断</h3>
+                                <p>基于深度学习算法，分析症状模式，提供准确的初步诊断建议和就医指导</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="feature-tag">即时分析</span>
+                                <span class="feature-tag">专业可靠</span>
+                            </div>
+                        </div>
+                        <div class="feature-card enhanced">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="card-badge">定位</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>附近医院定位</h3>
+                                <p>智能定位周边医疗机构，提供详细信息、路线规划和实时排队情况</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="feature-tag">精准定位</span>
+                                <span class="feature-tag">路线规划</span>
+                            </div>
+                        </div>
+                        <div class="feature-card enhanced">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <div class="card-badge">提醒</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>用药智能提醒</h3>
+                                <p>个性化用药计划，智能提醒服务，药物相互作用检查，确保用药安全</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="feature-tag">个性化</span>
+                                <span class="feature-tag">安全保障</span>
+                            </div>
+                        </div>
+                        <div class="feature-card enhanced">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="card-badge">安全</div>
+                            </div>
+                            <div class="card-content">
+                                <h3>隐私安全保护</h3>
+                                <p>符合HIPAA标准，端到端加密技术，确保您的医疗数据绝对安全</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="feature-tag">HIPAA标准</span>
+                                <span class="feature-tag">端到端加密</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 咨询诊断区域 -->
+            <section id="consultation" class="section consultation-section">
+                <div class="section-header">
+                    <h2>AI智能咨询诊断</h2>
+                    <p>请详细描述您的症状，我们的AI将为您提供专业分析</p>
+                </div>
+                
+                <div class="consultation-container">
+                    <div class="consultation-form">
+                        <div class="form-group">
+                            <label>症状描述</label>
+                            <textarea id="symptoms" placeholder="请详细描述您的症状，包括开始时间、严重程度、伴随症状等..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>基本信息</label>
+                            <div class="basic-info">
+                                <select id="age">
+                                    <option value="">选择年龄段</option>
+                                    <option value="0-10">0-10岁</option>
+                                    <option value="11-20">11-20岁</option>
+                                    <option value="21-30">21-30岁</option>
+                                    <option value="31-40">31-40岁</option>
+                                    <option value="41-50">41-50岁</option>
+                                    <option value="51-60">51-60岁</option>
+                                    <option value="60+">60岁以上</option>
+                                </select>
+                                <select id="gender">
+                                    <option value="">选择性别</option>
+                                    <option value="male">男性</option>
+                                    <option value="female">女性</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>上传病历/检查报告</label>
+                            <div class="upload-area" id="uploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>点击或拖拽文件到此处上传</p>
+                                <p class="upload-hint">支持 JPG, PNG, PDF 格式，最大10MB</p>
+                                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.pdf" multiple>
+                            </div>
+                            <div class="uploaded-files" id="uploadedFiles"></div>
+                        </div>
+
+                        <button class="analyze-button" onclick="analyzeSymptoms()">
+                            <i class="fas fa-stethoscope"></i>
+                            开始AI分析
+                        </button>
+                    </div>
+
+                    <div class="analysis-result" id="analysisResult">
+                        <div class="loading" id="loadingIndicator">
+                            <div class="spinner"></div>
+                            <p>AI正在分析您的症状...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 附近医院区域 -->
+            <section id="hospitals" class="section hospitals-section">
+                <div class="section-header">
+                    <h2>附近医院查找</h2>
+                    <p>基于您的位置，为您推荐最近的医疗机构</p>
+                </div>
+                
+                <div class="location-status" id="locationStatus">
+                    <div class="status-item">
+                        <i class="fas fa-location-dot"></i>
+                        <span id="locationText">正在获取您的位置...</span>
+                        <button class="location-btn" id="getLocationBtn" onclick="requestLocation()">
+                            <i class="fas fa-crosshairs"></i>
+                            重新定位
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hospitals-container">
+                    <div class="map-container">
+                        <div id="map" style="height:100%; margin:0px; padding:0px;">
+                            <!-- 百度地图将在这里加载 -->
+                        </div>
+                        <div class="map-controls">
+                            <button class="map-control-btn" onclick="centerMap()" title="回到当前位置">
+                                <i class="fas fa-location-arrow"></i>
+                            </button>
+                            <button class="map-control-btn" onclick="toggleMapType()" title="切换地图类型">
+                                <i class="fas fa-layer-group"></i>
+                            </button>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <div class="legend-marker hospital"></div>
+                                <span>医院</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker clinic"></div>
+                                <span>诊所</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker pharmacy"></div>
+                                <span>药房</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hospitals-list">
+                        <div class="search-controls">
+                            <div class="search-bar">
+                                <input type="text" placeholder="搜索医院名称或科室" id="hospitalSearch">
+                                <button onclick="searchHospitals()" class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="filter-controls">
+                                <select id="hospitalType">
+                                    <option value="hospital">医院</option>
+                                    <option value="clinic">诊所</option>
+                                    <option value="pharmacy">药房</option>
+                                </select>
+                                <select id="distanceFilter">
+                                    <option value="1000">1公里内</option>
+                                    <option value="2000">2公里内</option>
+                                    <option value="5000" selected>5公里内</option>
+                                    <option value="10000">10公里内</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="hospitals-results" id="hospitalsList">
+                            <div class="loading-hospitals">
+                                <div class="spinner"></div>
+                                <p>正在搜索附近医院...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 用药提醒区域 -->
+            <section id="medication" class="section medication-section">
+                <div class="section-header">
+                    <h2>用药提醒管理</h2>
+                    <p>智能管理您的用药计划，确保按时服药</p>
+                </div>
+                
+                <div class="medication-container">
+                    <div class="add-medication">
+                        <h3>添加用药提醒</h3>
+                        <div class="med-form">
+                            <input type="text" id="medName" placeholder="药品名称">
+                            <input type="text" id="medDosage" placeholder="剂量 (如: 1片)">
+                            <select id="medFrequency">
+                                <option value="">服药频率</option>
+                                <option value="once">每日1次</option>
+                                <option value="twice">每日2次</option>
+                                <option value="three">每日3次</option>
+                                <option value="four">每日4次</option>
+                            </select>
+                            <input type="time" id="medTime" placeholder="提醒时间">
+                            <button onclick="addMedication()">添加提醒</button>
+                        </div>
+                    </div>
+                    
+                    <div class="medication-list">
+                        <h3>当前用药计划</h3>
+                        <div id="medicationItems">
+                            <!-- 用药项目将动态添加 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 隐私保护区域 -->
+            <section id="privacy" class="section privacy-section">
+                <div class="section-header">
+                    <h2>隐私安全保护</h2>
+                    <p>我们严格遵循HIPAA隐私规范，保护您的医疗信息安全</p>
+                </div>
+                
+                <div class="privacy-content">
+                    <div class="privacy-features">
+                        <div class="privacy-item">
+                            <i class="fas fa-lock"></i>
+                            <h3>端到端加密</h3>
+                            <p>所有医疗数据采用AES-256加密技术，确保传输安全</p>
+                        </div>
+                        <div class="privacy-item">
+                            <i class="fas fa-user-shield"></i>
+                            <h3>匿名化处理</h3>
+                            <p>个人身份信息进行匿名化处理，保护隐私不泄露</p>
+                        </div>
+                        <div class="privacy-item">
+                            <i class="fas fa-database"></i>
+                            <h3>本地存储</h3>
+                            <p>敏感数据优先本地存储，减少网络传输风险</p>
+                        </div>
+                        <div class="privacy-item">
+                            <i class="fas fa-trash-alt"></i>
+                            <h3>数据销毁</h3>
+                            <p>按照HIPAA要求，定期安全销毁过期医疗数据</p>
+                        </div>
+                    </div>
+                    
+                    <div class="privacy-controls">
+                        <h3>隐私设置</h3>
+                        <div class="control-item">
+                            <label>数据分析授权</label>
+                            <label class="switch">
+                                <input type="checkbox" id="dataAnalytics" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="control-item">
+                            <label>医疗建议推送</label>
+                            <label class="switch">
+                                <input type="checkbox" id="medicalNotifications" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="control-item">
+                            <label>数据共享</label>
+                            <label class="switch">
+                                <input type="checkbox" id="dataSharing">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <button class="delete-data-btn" onclick="deleteAllData()">
+                            <i class="fas fa-trash"></i>
+                            删除所有数据
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 加载JavaScript文件 -->
+    <script src="js/main.js"></script>
+    <script src="js/consultation.js"></script>
+    <script src="js/hospitals.js"></script>
+    <script src="js/medication.js"></script>
+    <script src="js/privacy.js"></script>
+    
+    <!-- 额外样式 -->
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

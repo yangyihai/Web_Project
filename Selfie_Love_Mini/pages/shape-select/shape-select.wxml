@@ -1,0 +1,47 @@
+<view class="shape-select-container">
+  <view class="section-title">选择形状</view>
+  
+  <!-- 形状选择网格 -->
+  <view class="shape-grid">
+    <view 
+      class="shape-item {{selectedShape === item.id ? 'active' : ''}}"
+      wx:for="{{shapes}}"
+      wx:key="id"
+      bindtap="selectShape"
+      data-shape="{{item.id}}"
+    >
+      <image 
+        src="/static/shapes/{{item.id}}.png"
+        mode="aspectFit"
+        class="shape-image"
+        style="background-color: {{config.shapeColor}}; opacity: {{config.shapeOpacity / 100}}; filter: brightness({{config.shapeBrightness}})"
+      ></image>
+      <text class="shape-name">{{item.name}}</text>
+    </view>
+  </view>
+  
+  <!-- 预览区域 -->
+  <view class="preview-section">
+    <view class="preview-title">效果预览</view>
+    <view class="preview-box">
+      <!-- 示例照片 -->
+      <image src="/static/images/face-example.png" mode="aspectFill" class="preview-face"></image>
+      
+      <!-- 预览形状 -->
+      <view class="preview-shape" wx:if="{{selectedShape !== 'none'}}">
+        <image 
+          src="/static/shapes/{{selectedShape}}.png"
+          mode="aspectFit"
+          class="shape-preview-image"
+          style="background-color: {{config.shapeColor}}; opacity: {{config.shapeOpacity / 100}}; filter: brightness({{config.shapeBrightness}})"
+        ></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部操作区 -->
+  <view class="action-bar">
+    <button class="btn-cancel" bindtap="goBack">取消</button>
+    <button class="btn-confirm" bindtap="saveAndReturn">确定</button>
+  </view>
+</view>

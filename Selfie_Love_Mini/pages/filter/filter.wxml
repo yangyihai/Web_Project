@@ -1,0 +1,60 @@
+<view class="filter-container">
+  <view class="section-title">选择滤镜</view>
+  
+  <!-- 滤镜列表 -->
+  <scroll-view scroll-x class="filters-scroll">
+    <view class="filters-wrapper">
+      <view 
+        class="filter-item {{selectedFilter === item.id ? 'active' : ''}}" 
+        wx:for="{{filters}}"
+        wx:key="id"
+        bindtap="selectFilter" 
+        data-filter="{{item.id}}"
+      >
+        <view class="filter-image-wrap">
+          <image 
+            src="/static/images/filter-example.png" 
+            mode="aspectFill" 
+            class="filter-image"
+          ></image>
+          <view class="filter-overlay filter-{{item.id}}" wx:if="{{item.id !== 'none'}}"></view>
+        </view>
+        <text class="filter-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  
+  <!-- 当前滤镜说明 -->
+  <view class="current-filter">
+    <text class="current-filter-name">{{currentFilterName}}</text>
+    <text class="current-filter-desc">{{currentFilterDesc}}</text>
+  </view>
+  
+  <!-- 预览区域 -->
+  <view class="preview-section">
+    <view class="preview-title">效果预览</view>
+    <view class="preview-box">
+      <!-- 示例照片 -->
+      <image src="/static/images/face-example.png" mode="aspectFill" class="preview-face"></image>
+      
+      <!-- 滤镜效果 -->
+      <view class="filter-overlay filter-{{selectedFilter}}" wx:if="{{selectedFilter !== 'none'}}"></view>
+      
+      <!-- 预览形状 -->
+      <view class="preview-shape" wx:if="{{config.selectedShape !== 'none'}}">
+        <image 
+          src="/static/shapes/{{config.selectedShape}}.png" 
+          mode="aspectFit"
+          class="shape-preview-image"
+          style="background-color: {{config.shapeColor}}; opacity: {{config.shapeOpacity / 100}}; filter: brightness({{config.shapeBrightness / 100}})"
+        ></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部操作区 -->
+  <view class="action-bar">
+    <button class="btn-cancel" bindtap="goBack">取消</button>
+    <button class="btn-confirm" bindtap="saveAndReturn">确定</button>
+  </view>
+</view>

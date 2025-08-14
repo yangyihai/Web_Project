@@ -1,0 +1,498 @@
+.camera-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.simulator-notice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+}
+
+.simulator-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.simulator-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.simulator-desc {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.simulator-tip {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+.simulator-mock {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.mock-screen {
+  width: 200px;
+  height: 300px;
+  background-color: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 8px solid #333;
+}
+
+.mock-shape {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.mock-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mock-btn {
+  padding: 12px 40px;
+  background-color: #FF6B9D;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.camera-frame {
+  width: 90vw;
+  height: 90vw;
+  margin-top: 60px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.camera {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.shape-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100; /* 增加z-index确保在最前面 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto; /* 允许触摸事件 */
+}
+
+.shape {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-blend-mode: screen;
+  mask-image: url('/static/shapes/heart.png');
+  position: relative;
+}
+
+.custom-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  background-color: #f0f0f0;
+}
+
+.nav-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  color: #333;
+  font-size: 24px;
+}
+
+.nav-title {
+  color: #333;
+  font-size: 18px;
+  flex: 1;
+  text-align: center;
+  margin-right: 44px;
+}
+
+.bottom-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 5;
+}
+
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.emoji-text, .brightness-text {
+  font-size: 24px;
+}
+
+.control-label {
+  color: #333;
+  font-size: 12px;
+}
+
+.capture-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.capture-btn-inner {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background-color: #FF6B9D;
+}
+
+.filter-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.side-controls {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.side-control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.side-control-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.side-control-icon image {
+  width: 20px;
+  height: 20px;
+}
+
+.side-control-label {
+  font-size: 12px;
+  color: #333;
+}
+
+.color-preview {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.control-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  max-width: 90%;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.panel-close {
+  font-size: 24px;
+  color: #999;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-content {
+  padding: 20px 15px;
+}
+
+color-panel {
+  z-index: 101;
+}
+
+.color-presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.color-preset {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 5px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.more-option-btn {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.slider-icon {
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.brightness-slider {
+  flex: 1;
+}
+
+.size-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+}
+
+.preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-image {
+  width: 100%;
+  height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.action-btn {
+  width: 45%;
+  border-radius: 25px;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+.action-btn.discard {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.action-btn.save {
+  background-color: #FF6B9D;
+  color: white;
+}
+
+/* Emoji相关样式 */
+.emoji-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.emoji-item {
+  position: absolute;
+  z-index: 101;
+  pointer-events: auto;
+}
+
+.delete-emoji-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ff5252;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 102;
+}
+
+.delete-icon {
+  font-size: 20px;
+  color: white;
+}
+
+.emoji-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 200;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+
+.emoji-scroll-view {
+  height: calc(100% - 50px);
+  padding: 10px;
+}
+
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.emoji-grid-item {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}

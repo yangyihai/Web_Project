@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/camera/camera",
+    "pages/shape-select/shape-select",
+    "pages/color-adjust/color-adjust",
+    "pages/filter/filter",
+    "pages/gallery/gallery"
+  ],
+  "window": {
+    "navigationBarTitleText": "Selfie Love",
+    "navigationBarBackgroundColor": "#FF6B9D",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F8F9FA",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#FF6B9D",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/camera/camera",
+        "iconPath": "static/icons/camera.png",
+        "selectedIconPath": "static/icons/camera-active.png",
+        "text": "拍摄"
+      },
+      {
+        "pagePath": "pages/gallery/gallery",
+        "iconPath": "static/icons/gallery.png",
+        "selectedIconPath": "static/icons/gallery-active.png",
+        "text": "相册"
+      }
+    ]
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "需要使用相机进行拍摄"
+    },
+    "scope.writePhotosAlbum": {
+      "desc": "需要保存照片到相册"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "usingComponents": {}
+}

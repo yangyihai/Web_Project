@@ -1,0 +1,87 @@
+<view class="color-adjust-container">
+  <view class="section-title">颜色调整</view>
+  
+  <!-- 颜色选择器 -->
+  <view class="color-picker-section">
+    <view class="section-subtitle">选择颜色</view>
+    <view class="color-grid">
+      <view 
+        wx:for="{{colorPresets}}" 
+        wx:key="index" 
+        class="color-block {{selectedColor === item ? 'active' : ''}}" 
+        style="background-color: {{item}}"
+        bindtap="selectColor" 
+        data-color="{{item}}"
+      ></view>
+    </view>
+    
+    <view class="custom-color">
+      <text class="label">自定义颜色：</text>
+      <view class="color-input-wrapper">
+        <input type="text" value="{{customColor}}" placeholder="#FFFFFF" class="color-input" bindinput="onCustomColorInput" bindblur="validateColor" />
+        <view class="color-preview" style="background-color: {{validCustomColor ? customColor : '#FF6B9D'}}"></view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 亮度调整滑块 -->
+  <view class="slider-section">
+    <view class="section-subtitle">亮度</view>
+    <view class="slider-container">
+      <text class="slider-value">{{brightness}}%</text>
+      <slider
+        min="0"
+        max="150"
+        show-value="false"
+        block-size="20"
+        activeColor="#FF6B9D"
+        backgroundColor="#e0e0e0"
+        value="{{brightness}}"
+        bindchange="setBrightness"
+      />
+    </view>
+  </view>
+  
+  <!-- 透明度调整滑块 -->
+  <view class="slider-section">
+    <view class="section-subtitle">透明度</view>
+    <view class="slider-container">
+      <text class="slider-value">{{opacity}}%</text>
+      <slider
+        min="10"
+        max="100"
+        show-value="false"
+        block-size="20"
+        activeColor="#FF6B9D"
+        backgroundColor="#e0e0e0"
+        value="{{opacity}}"
+        bindchange="setOpacity"
+      />
+    </view>
+  </view>
+  
+  <!-- 预览区域 -->
+  <view class="preview-section">
+    <view class="preview-title">效果预览</view>
+    <view class="preview-box">
+      <!-- 示例照片 -->
+      <image src="/static/images/face-example.png" mode="aspectFill" class="preview-face"></image>
+      
+      <!-- 预览形状 -->
+      <view class="preview-shape" wx:if="{{config.selectedShape !== 'none'}}">
+        <image 
+          src="/static/shapes/{{config.selectedShape}}.png" 
+          mode="aspectFit"
+          class="shape-preview-image"
+          style="background-color: {{selectedColor}}; opacity: {{opacity / 100}}; filter: brightness({{brightness}}%)"
+        ></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部操作区 -->
+  <view class="action-bar">
+    <button class="btn-cancel" bindtap="goBack">取消</button>
+    <button class="btn-confirm" bindtap="saveAndReturn">确定</button>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+[submodule "Travel_Online"]
+	path = Travel_Online
+	url = https://github.com/yangyihai/Travel_Online.git
+[submodule "Worker_time_anxiety_device"]
+	path = Worker_time_anxiety_device
+	url = https://github.com/yangyihai/Worker_time_anxiety_device.git

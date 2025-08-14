@@ -1,0 +1,64 @@
+<view class="gallery-container">
+  <!-- 顶部标题 -->
+  <view class="gallery-header">
+    <text class="gallery-title">我的相册</text>
+    <view class="header-actions" wx:if="{{selectedPhotos.length > 0}}">
+      <text class="selected-count">已选择 {{selectedPhotos.length}} 张</text>
+      <text class="action-btn delete-btn" bindtap="confirmDelete">删除</text>
+    </view>
+  </view>
+  
+  <!-- 照片网格 -->
+  <view class="photo-grid" wx:if="{{photos.length > 0}}">
+    <view 
+      class="photo-item"
+      wx:for="{{photos}}"
+      wx:key="id"
+      bindtap="toggleSelect"
+      bindlongpress="viewPhoto"
+      data-photo="{{item}}"
+    >
+      <image 
+        src="{{item.path}}" 
+        mode="aspectFill"
+        class="photo-image {{isSelected(item.id) ? 'selected' : ''}}"
+      ></image>
+      <view class="photo-date">{{formatDate(item.date)}}</view>
+      <view class="select-indicator" wx:if="{{isSelected(item.id)}}">
+        <text class="check-icon">✓</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image class="empty-icon" src="/static/icons/empty-gallery.png" mode="aspectFit"></image>
+    <text class="empty-text">还没有照片哦</text>
+    <text class="empty-subtitle">快去拍摄一张吧</text>
+    <view class="empty-action" bindtap="goToCamera">去拍照</view>
+  </view>
+  
+  <!-- 照片预览弹窗 -->
+  <view class="preview-modal" wx:if="{{showPreview}}" bindtap="hidePreview">
+    <image src="{{previewPhoto.path}}" mode="aspectFit" class="preview-image"></image>
+    <view class="preview-tools" catchtap="stopPropagation">
+      <view class="tool-btn share-btn" bindtap="sharePhoto">
+        <image src="/static/icons/share.png" mode="aspectFit" class="tool-icon"></image>
+        <text class="tool-text">分享</text>
+      </view>
+      <view class="tool-btn save-btn" bindtap="saveToAlbum">
+        <image src="/static/icons/download.png" mode="aspectFit" class="tool-icon"></image>
+        <text class="tool-text">保存到手机</text>
+      </view>
+      <view class="tool-btn delete-btn" bindtap="deletePhoto">
+        <image src="/static/icons/delete.png" mode="aspectFit" class="tool-icon"></image>
+        <text class="tool-text">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮拍照按钮 -->
+  <view class="floating-camera-btn" bindtap="goToCamera">
+    <image src="/static/icons/camera.png" class="camera-icon"></image>
+  </view>
+</view>

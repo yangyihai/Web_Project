@@ -1,0 +1,128 @@
+<view class="camera-container">
+  <!-- 真机相机界面 -->
+  <block>
+    <!-- 自定义导航栏 -->
+    <view class="custom-nav">
+      <view class="nav-back" bindtap="goBack">
+        <text class="nav-icon">←</text>
+      </view>
+      <text class="nav-title">拍摄</text>
+    </view>
+
+    <!-- 相机容器（非全屏） -->
+    <view class="camera-frame" bindtouchstart="startTouchEmoji" bindtouchmove="moveTouchEmoji" bindtouchend="endTouchEmoji">
+      <!-- 相机组件 -->
+      <camera 
+        device-position="front" 
+        flash="auto"
+        class="camera"
+        binderror="handleError"
+      ></camera>
+      
+      <!-- Emoji 显示层 -->
+      <view class="emoji-overlay">
+        <view 
+          class="emoji-item"
+          wx:for="{{selectedEmojis}}"
+          wx:key="index"
+          style="left: {{item.x}}px; top: {{item.y}}px; font-size: {{item.size}}px; transform: rotate({{item.rotation}}deg);"
+          data-index="{{index}}"
+        >
+          {{item.text}}
+        </view>
+      </view>
+      
+      <!-- 删除按钮，仅在有选中emoji时显示 -->
+      <view class="delete-emoji-btn" wx:if="{{activeEmojiIndex !== -1}}" bindtap="deleteEmoji">
+        <text class="delete-icon">🗑️</text>
+      </view>
+    </view>
+
+    <!-- 底部控制栏 -->
+    <view class="bottom-controls">
+      <!-- Emoji按钮 -->
+      <view class="control-btn" bindtap="onEmoji">
+        <view class="control-icon emoji-icon">
+          <text class="emoji-text">😊</text>
+        </view>
+        <text class="control-label">表情</text>
+      </view>
+      
+      <!-- 拍照按钮 -->
+      <view class="capture-btn" bindtap="takePhoto">
+        <view class="capture-btn-inner"></view>
+      </view>
+      
+      <!-- 亮度按钮 -->
+      <view class="control-btn" bindtap="toggleBrightnessPanel">
+        <view class="control-icon brightness-icon">
+          <text class="brightness-text">☀️</text>
+        </view>
+        <text class="control-label">亮度</text>
+      </view>
+    </view>
+    
+    <!-- Emoji选择面板 -->
+    <view class="emoji-panel" style="height: {{emojiHeight}}px;" wx:if="{{isEmoji}}">
+      <view class="panel-header">
+        <text class="panel-title">选择表情</text>
+        <view class="panel-close" bindtap="hideEmoji">×</view>
+      </view>
+      
+      <scroll-view scroll-y="true" class="emoji-scroll-view">
+        <view class="emoji-grid">
+          <view 
+            class="emoji-grid-item"
+            wx:for="{{emojiList}}"
+            wx:key="index"
+            bindtap="selectEmoji"
+            data-emoji="{{item}}"
+          >
+            {{item}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    
+    <!-- 亮度控制面板 -->
+    <view class="control-panel brightness-panel" wx:if="{{showBrightnessPanel}}">
+      <view class="panel-header">
+        <text class="panel-title">屏幕亮度</text>
+        <view class="panel-close" bindtap="toggleBrightnessPanel">×</view>
+      </view>
+      
+      <view class="panel-content">
+        <view class="slider-container">
+          <text class="slider-icon">🔅</text>
+          <slider 
+            class="brightness-slider" 
+            min="1" 
+            max="100" 
+            value="{{screenBrightness}}"
+            activeColor="#FF6B9D" 
+            backgroundColor="#DDDDDD"
+            block-color="#FFFFFF"
+            block-size="20"
+            bindchange="adjustBrightness"
+            show-value="{{true}}"
+          />
+          <text class="slider-icon">🔆</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 拍照后预览弹窗 -->
+    <view class="preview-modal" wx:if="{{showPreview}}">
+      <view class="modal-content">
+        <image src="{{previewImage}}" mode="aspectFit" class="preview-image"></image>
+        <view class="preview-actions">
+          <button class="action-btn discard" bindtap="discardPhoto">重拍</button>
+          <button class="action-btn save" bindtap="savePhoto">保存</button>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 离屏Canvas用于合成图像，不显示在界面上 -->
+    <canvas type="2d" id="offscreenCanvas" style="position: absolute; left: -9999px; width: 100px; height: 100px;"></canvas>
+  </block>
+</view>

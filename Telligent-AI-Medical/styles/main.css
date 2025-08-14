@@ -1,0 +1,1665 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #1d1d1f;
+    background: #f5f5f7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 高级导航栏样式 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: saturate(180%) blur(25px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+    pointer-events: none;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.nav-brand:hover {
+    transform: scale(1.02);
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.logo-icon i {
+    font-size: 20px;
+    color: white;
+}
+
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.brand-subtitle {
+    font-size: 11px;
+    font-weight: 500;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    opacity: 1;
+}
+
+.nav-link-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-link-content i {
+    font-size: 16px;
+    color: #667eea;
+    transition: all 0.3s ease;
+}
+
+.nav-link-content span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #1d1d1f;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover .nav-link-content i,
+.nav-link.active .nav-link-content i {
+    color: #667eea;
+    transform: scale(1.1);
+}
+
+.nav-link:hover .nav-link-content span,
+.nav-link.active .nav-link-content span {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.04);
+    color: #86868b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-btn:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    transform: translateY(-2px);
+}
+
+.notification-btn {
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+    background: #ff3b30;
+    color: white;
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.nav-toggle {
+    display: none;
+    width: 24px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.nav-toggle span {
+    width: 100%;
+    height: 2px;
+    background: #1d1d1f;
+    border-radius: 1px;
+    transition: 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+}
+
+/* 滑动容器 */
+.slider-container {
+    margin-top: 72px;
+    width: 100%;
+    height: calc(100vh - 72px);
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-wrapper {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.28, 0.11, 0.32, 1);
+}
+
+/* Section基础样式 */
+.section {
+    width: 25%;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.section::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+/* 首页样式 - 高级设计 */
+.home-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f7;
+    overflow: hidden;
+}
+
+/* 英雄背景 */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.9) 0%, 
+        rgba(118, 75, 162, 0.8) 50%, 
+        rgba(255, 154, 158, 0.7) 100%);
+}
+
+.hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    top: 80%;
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+    top: 40%;
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(5) {
+    top: 70%;
+    left: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* 英雄容器 */
+.hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 80px 32px 40px;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    color: white;
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 32px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease-out;
+}
+
+.badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-title {
+    margin-bottom: 32px;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.title-main {
+    display: block;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-highlight {
+    display: block;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fef9c3 0%, #fde047 50%, #facc15 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 48px;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    position: relative;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 18px 36px;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+    color: #667eea;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+}
+
+.cta-button.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    animation: fadeInUp 1s ease-out 0.8s both;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* 功能特色区域 */
+.features-section {
+    position: relative;
+    z-index: 2;
+    background: #f5f5f7;
+    padding: 100px 32px;
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.features-header h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.features-header p {
+    font-size: 22px;
+    color: #86868b;
+    font-weight: 400;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card.enhanced {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card.enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.feature-card.enhanced:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.card-icon i {
+    font-size: 24px;
+    color: white;
+}
+
+.card-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.card-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+.card-footer {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.feature-tag {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 内容区域样式 */
+.consultation-section,
+.hospitals-section,
+.medication-section,
+.privacy-section {
+    background: #f5f5f7;
+    padding: 66px 22px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 66px;
+    max-width: 980px;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.08333;
+    letter-spacing: -0.003em;
+    color: #1d1d1f;
+    margin-bottom: 18px;
+}
+
+.section-header p {
+    font-size: 21px;
+    line-height: 1.38095;
+    color: #86868b;
+    font-weight: 400;
+}
+
+/* 咨询诊断样式 */
+.consultation-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 980px;
+    width: 100%;
+}
+
+.consultation-form {
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d1d1f;
+    letter-spacing: -0.022em;
+}
+
+.form-group textarea,
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    font-size: 17px;
+    line-height: 1.23536;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    -webkit-appearance: none;
+    font-family: inherit;
+}
+
+.form-group textarea:focus,
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #0071e3;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.basic-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.upload-area {
+    border: 2px dashed #d2d2d7;
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    position: relative;
+    background: #fafafa;
+}
+
+.upload-area:hover {
+    border-color: #0071e3;
+    background: rgba(0, 113, 227, 0.04);
+}
+
+.upload-area i {
+    font-size: 40px;
+    color: #0071e3;
+    margin-bottom: 16px;
+}
+
+.upload-area p {
+    margin-bottom: 8px;
+    font-size: 17px;
+    color: #1d1d1f;
+    font-weight: 400;
+}
+
+.upload-hint {
+    font-size: 14px;
+    color: #86868b;
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.analyze-button {
+    width: 100%;
+    background: #0071e3;
+    color: white;
+    border: none;
+    padding: 17px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.analyze-button:hover {
+    background: #0051d5;
+    transform: scale(1.02);
+}
+
+.analysis-result {
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* 医院查找样式 */
+.location-status {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.status-item i {
+    font-size: 20px;
+    color: #667eea;
+}
+
+#locationText {
+    flex: 1;
+    font-size: 16px;
+    color: #1d1d1f;
+    font-weight: 500;
+}
+
+.location-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.location-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.hospitals-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map-container {
+    position: relative;
+    background: white;
+    border-radius: 18px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.google-map {
+    width: 100%;
+    height: 500px;
+    border-radius: 18px;
+}
+
+.map-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.map-control-btn {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #1d1d1f;
+}
+
+.map-control-btn:hover {
+    background: #f5f5f7;
+    transform: scale(1.05);
+}
+
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    gap: 16px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #1d1d1f;
+    font-weight: 500;
+}
+
+.legend-marker {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-marker.hospital {
+    background: #ff3b30;
+}
+
+.legend-marker.clinic {
+    background: #007aff;
+}
+
+.legend-marker.pharmacy {
+    background: #34c759;
+}
+
+.hospitals-list {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.search-controls {
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px 0 0 12px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #667eea;
+}
+
+.search-btn {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 0 12px 12px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: scale(1.02);
+}
+
+.filter-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.filter-controls select {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.filter-controls select:focus {
+    border-color: #667eea;
+}
+
+.loading-hospitals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #86868b;
+}
+
+.loading-hospitals .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+.hospital-item {
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.hospital-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    border-color: #667eea;
+}
+
+.hospital-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.hospital-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 4px;
+}
+
+.hospital-type {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.hospital-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.hospital-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.hospital-info-item i {
+    width: 16px;
+    text-align: center;
+    color: #86868b;
+}
+
+.hospital-distance {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.hospital-rating {
+    color: #ff9500;
+    font-weight: 500;
+}
+
+.hospital-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.hospital-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.hospital-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hospital-btn.secondary {
+    background: white;
+    color: #667eea;
+    border: 1px solid #667eea;
+}
+
+.hospital-btn:hover {
+    transform: translateY(-1px);
+}
+
+.hospital-btn.primary:hover {
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+}
+
+.hospital-btn.secondary:hover {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+/* 用药提醒样式 */
+.medication-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.add-medication,
+.medication-list {
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.add-medication h3,
+.medication-list h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 30px;
+    letter-spacing: -0.005em;
+}
+
+.med-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.med-form input,
+.med-form select {
+    padding: 16px 18px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    font-size: 17px;
+    background: white;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    -webkit-appearance: none;
+    font-family: inherit;
+}
+
+.med-form input:focus,
+.med-form select:focus {
+    outline: none;
+    border-color: #0071e3;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.med-form button {
+    grid-column: span 2;
+    background: #0071e3;
+    color: white;
+    border: none;
+    padding: 17px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+}
+
+.med-form button:hover {
+    background: #0051d5;
+    transform: scale(1.02);
+}
+
+/* 隐私保护样式 */
+.privacy-content {
+    max-width: 980px;
+    width: 100%;
+}
+
+.privacy-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-bottom: 66px;
+}
+
+.privacy-item {
+    background: white;
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+}
+
+.privacy-item:hover {
+    transform: translateY(-4px);
+}
+
+.privacy-item i {
+    font-size: 40px;
+    color: #0071e3;
+    margin-bottom: 20px;
+}
+
+.privacy-item h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1d1d1f;
+    letter-spacing: -0.01em;
+}
+
+.privacy-item p {
+    font-size: 17px;
+    line-height: 1.47059;
+    color: #86868b;
+}
+
+.privacy-controls {
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.privacy-controls h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 30px;
+    letter-spacing: -0.005em;
+}
+
+.control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.control-item:last-of-type {
+    border-bottom: none;
+}
+
+.control-item label {
+    font-size: 17px;
+    font-weight: 400;
+    color: #1d1d1f;
+}
+
+/* 苹果风格开关 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e5ea;
+    transition: 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    border-radius: 31px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+input:checked + .slider {
+    background-color: #34c759;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.delete-data-btn {
+    width: 100%;
+    background: #ff3b30;
+    color: white;
+    border: none;
+    padding: 17px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.delete-data-btn:hover {
+    background: #d70015;
+    transform: scale(1.02);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 24px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+    }
+    
+    .hero-stats {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 834px) {
+    .navbar {
+        height: 64px;
+    }
+    
+    .slider-container {
+        margin-top: 64px;
+        height: calc(100vh - 64px);
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-actions {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .brand-text {
+        font-size: 20px;
+    }
+    
+    .brand-subtitle {
+        display: none;
+    }
+    
+    .hero-container {
+        padding: 60px 24px 20px;
+    }
+    
+    .title-main,
+    .title-highlight {
+        font-size: 48px;
+    }
+    
+    .hero-description {
+        font-size: 20px;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .cta-button {
+        width: 280px;
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        gap: 30px;
+    }
+    
+    .features-section {
+        padding: 80px 24px;
+    }
+    
+    .features-header h2 {
+        font-size: 40px;
+    }
+    
+    .features-header p {
+        font-size: 20px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .section-header h2 {
+        font-size: 36px;
+    }
+    
+    .consultation-container,
+    .hospitals-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .med-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .med-form button {
+        grid-column: span 1;
+    }
+    
+    .privacy-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .consultation-section,
+    .hospitals-section,
+    .medication-section,
+    .privacy-section {
+        padding: 40px 20px;
+    }
+    
+    .consultation-form,
+    .map-container,
+    .hospitals-list,
+    .add-medication,
+    .medication-list,
+    .privacy-controls {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        height: 60px;
+    }
+    
+    .slider-container {
+        margin-top: 60px;
+        height: calc(100vh - 60px);
+    }
+    
+    .nav-container {
+        padding: 0 16px;
+    }
+    
+    .logo-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .logo-icon i {
+        font-size: 18px;
+    }
+    
+    .brand-text {
+        font-size: 18px;
+    }
+    
+    .hero-container {
+        padding: 40px 16px 20px;
+    }
+    
+    .title-main,
+    .title-highlight {
+        font-size: 36px;
+    }
+    
+    .hero-description {
+        font-size: 18px;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 280px;
+        padding: 16px 32px;
+        font-size: 16px;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .features-section {
+        padding: 60px 16px;
+    }
+    
+    .features-header h2 {
+        font-size: 32px;
+    }
+    
+    .features-header p {
+        font-size: 18px;
+    }
+    
+    .feature-card.enhanced {
+        padding: 30px 20px;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-icon i {
+        font-size: 20px;
+    }
+    
+    .card-content h3 {
+        font-size: 20px;
+    }
+    
+    .section-header h2 {
+        font-size: 28px;
+    }
+    
+    .section-header p {
+        font-size: 18px;
+    }
+    
+    .basic-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-area {
+        padding: 30px 16px;
+    }
+    
+    .consultation-section,
+    .hospitals-section,
+    .medication-section,
+    .privacy-section {
+        padding: 30px 16px;
+    }
+    
+    .consultation-form,
+    .map-container,
+    .hospitals-list,
+    .add-medication,
+    .medication-list,
+    .privacy-controls {
+        padding: 24px 16px;
+    }
+}

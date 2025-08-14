@@ -1,0 +1,87 @@
+<view class="index-container">
+    <!-- 顶部背景 -->
+    <view class="top-bg"></view>
+    <!-- 欢迎和应用信息 -->
+    <view class="welcome-section">
+      <image class="logo" src="/static/images/logo.png" mode="aspectFit"></image>
+      <text class="app-name">Selfie Love</text>
+      <text class="app-slogan">让你的眼中有星星有爱心</text>
+      
+      <view class="feature-buttons">
+        <view class="feature-button primary" bindtap="navigateToCamera">
+          <text class="icon">📷</text>
+          <text class="text">开始拍摄</text>
+          <text class="photo-count" wx:if="{{photoCount > 0}}">已有{{photoCount}}张照片</text>
+        </view>
+        
+        <view class="feature-button secondary" bindtap="navigateToGallery">
+          <text class="icon">🖼️</text>
+          <text class="text">我的相册</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 功能简介部分 -->
+    <view class="features-section">
+      <view class="section-title">功能介绍</view>
+      
+      <view class="feature-card">
+        <image class="feature-image" src="/static/images/feature-shape.png" mode="aspectFit"></image>
+        <view class="feature-info">
+          <text class="feature-title">多种可爱形状</text>
+          <text class="feature-desc">爱心、星星、圆形等多种形状选择</text>
+        </view>
+      </view>
+      
+      <view class="feature-card">
+        <image class="feature-image" src="/static/images/feature-color.png" mode="aspectFit"></image>
+        <view class="feature-info">
+          <text class="feature-title">自定义颜色</text>
+          <text class="feature-desc">调整颜色、亮度和透明度</text>
+        </view>
+      </view>
+      
+      <view class="feature-card">
+        <image class="feature-image" src="/static/images/feature-filter.png" mode="aspectFit"></image>
+        <view class="feature-info">
+          <text class="feature-title">精美滤镜</text>
+          <text class="feature-desc">多种滤镜让你的照片更上一层楼</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 底部提示 -->
+    <view class="footer-tip" bindtap="toggleTutorial">
+      <text>{{showTutorial ? '收起教程' : '查看使用教程'}}</text>
+      <text class="arrow-down">{{showTutorial ? '↑' : '↓'}}</text>
+    </view>
+    
+    <!-- 使用教程部分 -->
+    <view class="tutorial-section" wx:if="{{showTutorial}}">
+      <view class="section-title">使用教程</view>
+      
+      <view class="tutorial-steps">
+        <view class="step">
+          <view class="step-number">1</view>
+          <text class="step-desc">点击"开始拍摄"按钮</text>
+        </view>
+        <view class="step-arrow">→</view>
+        
+        <view class="step">
+          <view class="step-number">2</view>
+          <text class="step-desc">选择形状和颜色</text>
+        </view>
+        <view class="step-arrow">→</view>
+        
+        <view class="step">
+          <view class="step-number">3</view>
+          <text class="step-desc">拍照并保存</text>
+        </view>
+      </view>
+      
+      <view class="permission-tip" wx:if="{{!hasCameraPermission}}">
+        <text>⚠️ 请确保已授权相机和相册权限</text>
+        <button class="permission-btn" bindtap="requestCameraPermission">授权相机权限</button>
+      </view>
+    </view>
+  </view>

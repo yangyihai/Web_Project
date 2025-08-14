@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Selfie Love",
+  "navigationBarBackgroundColor": "#FF6B9D",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#FFFFFF",
+  "backgroundColorTop": "#FF6B9D",
+  "backgroundColorBottom": "#FFFFFF",
+  "usingComponents": {}
+}
